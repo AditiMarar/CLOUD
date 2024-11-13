@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .background {
+            background-image: url('b1.png'); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            width: 100%;
+            position: absolute;
+            z-index: -1;
+        }
+
+        .login-container {
+            width: 300px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+    </style>
+    <script>
+        function validateLogin(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get input values
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            // Check if credentials match
+            if (username === "mararaditi294@gmail.com" && password === "CloudProjT6") {
+                // Redirect to next page
+                window.location.href = "n1.html";
+            } else {
+                // Show error message
+                alert("Invalid username or password.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="login-container">
+        <div class="login-form">
+            <p style="color: aquamarine; text-align: center; font-size: larger; font-family: 'Times New Roman', Times, serif;">LOGIN</p>
+            <form onsubmit="validateLogin(event)">
+                <input type="text" id="username" placeholder="Username" required><br><br>
+                <input type="password" id="password" placeholder="Password" required><br><br>
+                <button type="submit" style="background-color: rgb(17, 120, 100); margin: 10px; color: aliceblue; border-radius: 5px;">Login</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

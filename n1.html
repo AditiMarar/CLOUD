@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Syntax</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+        }
+
+        header {
+            background-color: #2c7468;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #2cda98;
+            padding: 10px;
+            text-align: center;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        article {
+            margin-bottom: 20px;
+        }
+
+        h1, h2, h3 {
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        p {
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        pre, code {
+            background-color: #f9f9f9;
+            padding: 10px;
+            display: block;
+            border-left: 5px solid #2cda98;
+            margin-bottom: 15px;
+        }
+
+        footer {
+            background-color:  #2c7468;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .result {
+            font-weight: bold;
+            color: green;
+        }
+
+        .incorrect {
+            color: red;
+        }
+
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const userInput = document.getElementById('ans');
+            const checkButton = document.getElementById('checkButton');
+            const result = document.getElementById('result');
+
+            let lastKeypressTime = 0;
+            let typingInterval = 700; // Adjust this value as needed
+            let typingInterval2 = 2000;
+
+            userInput.addEventListener('input', () => {
+                const currentTime = Date.now();
+                const timeDiff = currentTime - lastKeypressTime;
+
+                if (timeDiff > typingInterval) {
+                    result.textContent = 'Do not copy.';
+                } else {
+                    result.textContent = 'Typing...';
+                }
+
+                lastKeypressTime = currentTime;
+            });
+
+            checkButton.addEventListener('click', () => {
+                const timeDiff = Date.now() - lastKeypressTime;
+
+                if (timeDiff > typingInterval2) {
+                    result.textContent = 'Cheating not allowed.';
+                } else {
+                    result.textContent = 'YOU DID IT ON YOUR OWN!!';
+                }
+            });
+        });
+        function checkAnswer() {
+            // Get the user's input
+            let answer = document.getElementById('ans').value;
+            answer = answer.replace(/\s+/g, '');
+
+            // Correct answer for checking if a number is even
+            let correctAnswer = "a%2==0";
+
+            // Display result
+            if (answer.trim() === correctAnswer) {
+                document.getElementById('r').innerHTML = "Correct! The condition to check if 'a' is even is: " + correctAnswer;
+                document.getElementById('r').classList.remove('incorrect');
+                document.getElementById('r').classList.add('r');
+            } else {
+                document.getElementById('r').innerHTML = "Incorrect! Please try again.";
+                document.getElementById('r').classList.remove('r');
+                document.getElementById('r').classList.add('incorrect');
+            }
+        }
+    </script>
+</head>
+<body>
+
+<header>
+    <h1>Python Conditions</h1>
+</header>
+
+<nav>
+    <p>TEAM 6 | CC | CASE STUDY</p>
+</nav>
+
+<main>
+    <article>
+        <h2 style="color: aliceblue;">Python conditions</h2>
+        <p>Python supports the usual logical conditions from mathematics:<br><ol>
+
+            <li>Equals: a == b</li>
+            <li>Not Equals: a != b</li>
+            <li>Less than: a < b</li>
+            <li>Less than or equal to: a <= b</li>
+            <li>Greater than: a > b</li>
+            <li>Greater than or equal to: a >= b</li>
+            </ol><br>
+            These conditions can be used in several ways, most commonly in "if statements" and loops.
+            <br>
+            An "if statement" is written by using the if keyword.</p>
+
+        <p>Here are some examples:</p>
+
+        <pre><br>This code checks whether 2 variables are equal to each other<br><code>
+x = 2
+y = 3
+if x == y:
+    print("x is equal to y")
+else:
+    print("x is not equal to y")
+        </code></pre><br><br>
+
+        Now we will give you some questions~
+
+        <pre><b><br>QUESTION:</b><br><br>To check if 'a' is even or not<br><code>
+            a = 2
+            if <input type="text" id="ans" placeholder="Enter your answer here">:
+                print("a is even")
+            else:
+                print("a is odd")
+        </code>
+        <p id="result"></p>
+        <button onclick="checkAnswer()" id="checkButton">Submit</button>
+        <p id="r"></p></pre>
+
+       
+    </article>
+</main>
+
+<br><br><br><br>
+<footer>
+    <p>&copy;cloud case study t6</p>
+</footer>
+
+</body>
+</html>

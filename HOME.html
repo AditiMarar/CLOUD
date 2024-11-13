@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Full Screen Video Background with Image</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+
+    video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+    img {
+      position: absolute;
+      top: 20px; /* Adjust top position as needed */
+      left: 20px; /* Adjust left position as needed */
+      z-index: 1; /* Ensure image is above the video */
+      height: 100px;
+      width: 300px;
+    }
+
+    .tabs {
+      list-style: none;
+      display: flex;
+      justify-content: right;
+      padding: 0;
+      margin: 0;
+    }
+
+    .tabs li {
+      margin: 0 10px;
+      position: relative;
+    }
+
+    .tabs li a {
+      text-decoration: none;
+      color: whitesmoke;
+      padding: 10px;
+      border-bottom: 2px solid transparent;
+    }
+
+    .tabs li a:hover {
+      border-bottom: 2px solid aquamarine;
+    }
+
+    .tab-content {
+      display: none;
+      position: absolute;
+      width: 100%;
+      background-color: #fff;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+      top: 40px; /* Adjust the top position as needed */
+    }
+
+    .tabs li:hover .tab-content {
+      display: block;
+    }
+
+    .tab-panel {
+      display: none;
+      padding: 10px;
+    }
+
+    .tabs li:hover .tab-panel {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  
+  <video autoplay muted loop>
+    <source src="main.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <ul class="tabs">
+    <li>
+        <a href="login.html" target="_blank">LOGIN</a>
+      </li>
+      <li>
+        <a href="signup.html" target="_blank">SIGN UP</a>
+      </li>
+      <li>
+        <a href="n1.html">START LEARNING PYTHON </a>
+      </li>
+  </ul>
+  <br><br><br><br><br>
+  <br><br><br><br><br>
+  <br><br><br><br><br>
+  <p style="color: white; font-size: 30px;width: 50%;">WELCOME!!, Here at T6CC we make sure you'll find coding in Python, a hobby you love </p>
+</body>
+</html>

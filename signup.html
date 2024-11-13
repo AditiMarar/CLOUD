@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up Page</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .background {
+            background-image: url('b1.png'); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            width: 100%;
+            position: absolute;
+            z-index: -1;
+        }
+
+        .login-container {
+            width: 300px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .password-strength {
+            display: inline-block;
+            width: 100px;
+            height: 20px;
+            background-color: #ddd;
+            border-radius: 10px;
+            margin-top: 5px;
+        }
+
+        .password-strength-weak {
+            background-color: red;
+        }
+
+        .password-strength-medium {
+            background-color: orange;
+        }
+
+        .password-strength-strong {
+            background-color: green;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="login-container">
+
+        <div class="login-form">
+            <p style="color: aquamarine; text-align: center; font-size: larger; font-family: 'Times New Roman', Times, serif;">SIGN UP</p>
+            <form onsubmit="return validateForm()">
+
+                <input type="email" placeholder="Email" required><br><br>
+                
+                <input type="password" id="password" name="password" oninput="checkPasswordStrength()" placeholder="Password" required><br>
+                <br><br>
+                
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm Password" required><br><br><br>
+                <div class="password-strength" id="password-strength-indicator"></div><br><br>
+                <span class="error-message" id="error-message"></span><br><br>
+                
+                <button type="submit" style="background-color: rgb(17, 120, 100); color: aliceblue; border-radius: 5px;">Sign Up</button>
+            </form>
+        </div>
+
+        <script>
+            function checkPasswordStrength() {
+                const password = document.getElementById("password").value;
+                const strengthIndicator = document.getElementById("password-strength-indicator");
+
+                if (password.length < 6) {
+                    strengthIndicator.classList.remove("password-strength-weak", "password-strength-medium", "password-strength-strong");
+                    strengthIndicator.classList.add("password-strength-weak");
+                } else if (password.length >= 6 && password.length < 12) {
+                    strengthIndicator.classList.remove("password-strength-weak", "password-strength-strong");
+                    strengthIndicator.classList.add("password-strength-medium");
+                } else {
+                    strengthIndicator.classList.remove("password-strength-weak", "password-strength-medium");
+                    strengthIndicator.classList.add("password-strength-strong");
+                }
+            }
+
+            function validateForm() {
+                const password = document.getElementById("password").value;
+                const confirmPassword = document.getElementById("confirm-password").value;
+                const errorMessage = document.getElementById("error-message");
+
+                if (password !== confirmPassword) {
+                    errorMessage.textContent = "Passwords do not match!";
+                    return false; // Prevent form submission
+                } else {
+                    errorMessage.textContent = "";
+                    return true; // Allow form submission
+                }
+            }
+        </script>
+    </div>
+</body>
+</html>
